@@ -1,2 +1,152 @@
-#include<iostream>
-using namespcace std;
+SSH generate
+ssh-keygen -t ed25519 -C "rifath123@gmail.com"
+//To copy the generated key
+Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub" | Set-Clipboard
+//Test SSH connection
+ssh -T git@github.com
+
+1)touch fimename.html > to create file
+2)ls >to see file & ls -lart > to see hidden file
+3)git reset >untracked all
+4)git checkout -f >>all file back after delete & git checkout index.html >> back one file
+5)
+-------All Commands----------------
+
+===============================================================================
+                       GIT & GITHUB COMMANDS CHEAT SHEET
+===============================================================================
+
+-------------------------------------------------------------------------------
+1. CONFIGURATION COMMANDS
+-------------------------------------------------------------------------------
+# Set your global Git username for all commits
+git config --global user.name "Your Name"
+
+# Set your global Git email address for all commits
+git config --global user.email "your.email@example.com"
+
+
+-------------------------------------------------------------------------------
+2. REPOSITORY SETUP & INSPECTION COMMANDS
+-------------------------------------------------------------------------------
+# Initialize a new Git repository in the current folder
+git init
+
+# Check the status of working directory and staging area
+git status
+
+# List all files including hidden files like .git
+ls -a
+
+
+-------------------------------------------------------------------------------
+3. STAGING & COMMITTING COMMANDS
+-------------------------------------------------------------------------------
+# Add a single specific file to the staging area
+git add <filename>
+
+# Add all modified and untracked files to the staging area
+git add .
+
+# Save staged changes to the repository with a commit message
+git commit -m "Your commit message"
+
+
+-------------------------------------------------------------------------------
+4. HISTORY, COMPARISON & RESTORATION COMMANDS
+-------------------------------------------------------------------------------
+# Discard local uncommitted changes in a file
+git checkout <filename>
+
+# View the commit history log
+git log
+
+# View detailed diff of changes made in the last commit
+git log -p -1
+
+# Show changes between working directory and staging area
+git diff
+
+# Show changes between staged files and the last commit
+git diff --staged
+
+
+-------------------------------------------------------------------------------
+5. FILE REMOVAL & IGNORING FILES
+-------------------------------------------------------------------------------
+# Remove a file from tracking and delete it from disk
+git rm <filename>
+
+# touch .gitignore file: List files or directories that Git should ignore
+# Example entries inside .gitignore:
+# *.log
+# node_modules/
+
+
+-------------------------------------------------------------------------------
+6. BRANCHING & MERGING COMMANDS
+-------------------------------------------------------------------------------
+# List all existing local branches
+git branch
+
+# Create a new branch
+git branch <branch-name>
+
+# Switch working workspace to a specific branch
+git checkout <branch-name>
+
+# Combine changes from target branch into active branch
+git merge <branch-name>
+
+git merge main -m "comment" >> if you are in master branch & want to merge the changes in main branch
+git merge master -m "comment" >> if you are in main branch & want to merge the changes in master branch
+
+
+-------------------------------------------------------------------------------
+7. REMOTE REPOSITORY COMMANDS (GITHUB)
+-------------------------------------------------------------------------------
+# Connect local repository to a remote GitHub URL named origin
+git remote add origin <remote-repository-url>
+
+# Display remote repository URLs attached to local repo
+git remote -v
+
+# Upload local commits to remote branch on GitHub
+git push -u origin <branch-name>
+
+# Fetch and merge updates from GitHub to local branch
+git pull
+
+
+-------------------------------------------------------------------------------
+8. HELPER TERMINAL COMMANDS
+-------------------------------------------------------------------------------
+# Clear the terminal screen window
+clear
+
+# Navigate up one directory level
+cd ..
+
+===============================================================================
+
+
+# 1. Generate a new SSH key (replace with your email)
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+# 2. Start the SSH agent in the background
+eval "$(ssh-agent -s)"
+
+# 3. Add your SSH key to the agent
+ssh-add ~/.ssh/id_ed25519
+
+# 4. Display your public key (copy the output to add to GitHub.com -> Settings -> SSH and GPG keys)
+cat ~/.ssh/id_ed25519.pub
+
+# 5. Test your connection to GitHub
+ssh -T git@github.com
+
+# 6. Pull remote changes (if repository has a README or existing files)
+git pull origin main --rebase
+
+# 7. Push your local files to GitHub
+git push -u origin main
